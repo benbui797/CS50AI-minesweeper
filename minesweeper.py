@@ -110,7 +110,6 @@ class Sentence():
         if len(self.cells) == self.count:
             return self.cells
         
-
     def known_safes(self):
         """
         Returns the set of all cells in self.cells known to be safe.
@@ -119,7 +118,6 @@ class Sentence():
         # if count is 0, all cells are safe
         if self.count == 0:
             return self.cells
-
 
     def mark_mine(self, cell):
         """
@@ -250,7 +248,6 @@ class MinesweeperAI():
         # Clean up knowledge (duplicates and empty sets)
         self.clean_knowledge()
         
-
     def make_safe_move(self):
         """
         Returns a safe cell to choose on the Minesweeper board.
@@ -266,7 +263,6 @@ class MinesweeperAI():
         for cell in self.safes:
             if cell not in self.moves_made:
                 return cell
-
 
     def make_random_move(self):
         """
@@ -286,12 +282,11 @@ class MinesweeperAI():
         while True:
             move = tuple(
                 [random.randrange(self.height),
-                random.randrange(self.width)]
+                 random.randrange(self.width)]
             )
             if move not in self.moves_made and move not in self.mines:
                 return move
 
-    
     def get_neighbors(self, cell):
         """
         Returns a list of cells neighbouring the input cell.
@@ -323,7 +318,7 @@ class MinesweeperAI():
         for sentence in self.knowledge:
             for subsentence in self.knowledge:
                 if subsentence.cells != sentence.cells and \
-                    len(subsentence.cells) > 0:
+                        len(subsentence.cells) > 0:
                     if subsentence.cells.issubset(sentence.cells):
                         new_cells = sentence.cells.symmetric_difference(subsentence.cells)
                         new_count = sentence.count - subsentence.count
@@ -333,7 +328,6 @@ class MinesweeperAI():
         for sentence in deductions:
             self.knowledge.append(sentence)
 
-    
     def clean_knowledge(self):
         """
         Loop through knowledge and deletes empty and duplicate sets.
