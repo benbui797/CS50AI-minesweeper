@@ -235,12 +235,12 @@ class MinesweeperAI():
                 for cell in mines.copy():
                     self.mark_mine(cell)
         
-        # # print for debugging
-        # print(f"Safe: {self.safes}")
-        # print(f"Mines: {self.mines}")
-        # print("Knowledge:")
-        # for sentence in self.knowledge:
-        #     print(sentence)
+        # print for debugging
+        print(f"Safe: {self.safes}")
+        print(f"Mines: {self.mines}")
+        print("Knowledge:")
+        for sentence in self.knowledge:
+            print(sentence)
 
         # Update knowledge base with new knowledge
         self.deduce_knowledge()
